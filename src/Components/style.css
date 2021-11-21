@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+.container-item {
+    width: 40%;
+    margin: 25px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: bisque;
+    font-size: 23px;
+    height: 300px;
+}
