@@ -1,5 +1,16 @@
+/* @import './index.css'; */
+
+.cal-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:center;
+  gap: 60%; 
+}
+
 .App {
   text-align: center;
+  background-color: var(--color-bacground);
 }
 
 .btn {
@@ -11,7 +22,7 @@
 }
 
 .btn.active {
-  background-color: aquamarine;
+  background-color: var(--color-primary);
   color: #282c34;
 }
 

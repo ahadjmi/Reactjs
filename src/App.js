@@ -11,7 +11,7 @@ const originalList = [
   {id : 3, title: "3", comp: <Items label={'3'}/>, status:"inActive", checkItems : () => this},
   {id : 4, title: "4", comp: <Items label={'4'}/>, status:"inActive", checkItems : () => this},
   {id : 5, title: "5", comp: <Items label={'5'}/>, status:"active", checkItems : () => this},
-  {id : 6, title: "Ahad", comp: <Items label={'Ahad'}/>, status:"inActive", checkItems : () => this},
+  {id : 6, title: "6", comp: <Items label={'Ahad'}/>, status:"inActive", checkItems : () => this},
 ]
 
 function App() {
@@ -49,8 +49,22 @@ function App() {
   }
 
   const sort = () => {
-    list.sort((a,b) => b.id - a.id);
+    list.sort((a,b) => a.id - b.id);
     setList(list.slice());
+    //document.documentElement.style.setProperty('--color-primary', 'green');
+    // root.classList.add('dark-theme')
+    // console.log(root.classList);
+  }
+
+  const theme = () => {
+    const theme = sessionStorage.getItem('theme');
+    let settheme = theme && theme === 'dark' ? 'light':'dark';
+    console.log('theme', settheme)
+    //document.querySelector('#root').setAttribute('data-theme', settheme);
+    const root = document.querySelector('#root');
+    root.className = settheme;
+    sessionStorage.setItem('theme', settheme);
+    console.log(root);
   }
   
   useEffect(() => {
@@ -60,6 +74,7 @@ function App() {
   return (
     <div className="App">
       {/* <SortElement /> */}
+      <button onClick={theme}>change theme</button>
       <button onClick={sort}>sort</button>
       {originalList.map((item, i) => {
         //const status = list.some((it) => it.id === item.id) && "activee";

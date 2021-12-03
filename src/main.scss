@@ -1,0 +1,122 @@
+@mixin grid_container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 65px 1fr;
+}
+
+.container {
+    @include grid_container;
+
+    &__nav {
+        grid-row: 1/2;
+        grid-column: 1/-1;
+        //border: 2px solid yellow;
+        background-color: lightskyblue;
+    }
+    
+
+    &__sidebar {
+        grid-row: 2/3;
+        grid-column: 1/2;
+        //border: 2px solid green;
+        background-color: lightskyblue;
+        
+    }
+
+    &__main {
+        grid-column: 2/3;
+        grid-column: 2/3;
+        overflow-y: auto;
+
+        &--scroll {
+            display: flex;
+            margin-top: 40px;
+            align-items: flex-start;
+            justify-content: space-around;
+            height: 1500px;
+            width: 100%;
+
+            .form__radio {
+                input {
+                    display: none;
+                }
+                
+                .check-button{
+                    display: inline-block;
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                    border: 5px solid lime;
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 14px;
+                        height: 14px;
+                        border-radius: 50%;
+                        background-color: lime;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        opacity: 0;
+                        transform: translate(-50%,-50%);
+                        transition: opacity .2s;
+                    }
+                    &:hover {
+                        border-color: lighten(lime, 20%);
+                    }
+                   
+                   
+                }
+                
+                input:checked ~ label .check-button::after {
+                   opacity: 1;
+                }
+                
+            }
+
+            .form__checkbox {
+                &--label {
+                    &-input{
+                        //opacity: 1;
+                        display: none;
+ 
+                    }
+                    &-button {
+                        display: block;
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 3px;
+                        border: 3px solid teal;
+                        position: relative;
+
+                        &::after {
+                            content: "";
+                            width: 13px;
+                            height: 5px;
+                            border-left: 4px solid turquoise;
+                            border-bottom: 4px solid turquoise;
+                            top: 18%;
+                            left: 8%;
+                            position: absolute;
+                            opacity: 0;
+                            transform: rotate(-45deg);
+                            transition: opacity .3s;
+                        }
+                    }
+
+                    &-input:checked ~ .check-button::after {
+                        opacity: 1;
+                        //background-color: violet;
+                    }
+
+                }
+            }
+            
+        }
+       
+    }
+}
